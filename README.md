@@ -115,7 +115,7 @@ lib/pages/profile_page.dart
 ✔️ Services Used:
 Firebase Authentication
 Cloud Firestore
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 ✔️ Collections:
 users
 carts
