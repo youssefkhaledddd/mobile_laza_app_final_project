@@ -122,3 +122,112 @@ carts
 favorites
 orders
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+1️⃣ Install Flutter SDK
+
+Download Flutter SDK from:
+https://flutter.dev/docs/get-started/install
+
+Extract Flutter to:
+C:\flutter   (Windows)
+
+Add Flutter to PATH:
+C:\flutter\bin
+
+Verify installation:
+flutter doctor
+==================================================================================================================================================
+2️⃣ Install Project Dependencies
+flutter pub get
+==================================================================================================================================================
+🔥 Firebase Setup Steps
+1️⃣ Create Firebase Project
+Go to:
+https://console.firebase.google.com
+Create a new project
+==================================================================================================================================================
+2️⃣ Add Android App to Firebase
+Package name:
+com.example.laza_app
+==================================================================================================================================================
+Download:
+google-services.json
+==================================================================================================================================================
+Put it in:
+android/app/
+==================================================================================================================================================
+3️⃣ Enable Firebase Services
+From Firebase Console:
+🔐 Authentication
+Enable Email/Password
+==================================================================================================================================================
+📦 Firestore Database
+Create Firestore database
+Start in test mode (for development)
+==================================================================================================================================================
+4️⃣ FlutterFire CLI Setup
+dart pub global activate flutterfire_cli
+firebase login
+flutterfire configure
+lib/firebase_options.dart
+==================================================================================================================================================
+🔐 Firestore Rules Installation
+
+Firestore Rules (Development / Course Project)
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /carts/{userId}/items/{itemId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /favorites/{userId}/items/{itemId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /orders/{orderId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+    }
+  }
+}
+==================================================================================================================================================
+
+▶️ How to Run the Application
+
+📱 Run on Android Emulator
+Open Android Studio
+Start Emulator
+==================================================================================================================================================
+Run:
+flutter run
+==================================================================================================================================================
+📱 Run on Physical Android Device
+Enable Developer Options
+flutter run
+==================================================================================================================================================
+🍎 Run on iOS (Mac only)
+flutter pub get
+cd ios
+pod install
+cd ..
+flutter run
+==================================================================================================================================================
+📌 Requires:
+macOS
+Xcode
+CocoaPods
+==================================================================================================================================================
+🏗️ Build APK (Android)
+flutter build apk
+==================================================================================================================================================
+Output:
+build/app/outputs/flutter-apk/app-release.apk
+==================================================================================================================================================
+🏗️ Build iOS (Release)
+flutter build ios
+==================================================================================================================================================
